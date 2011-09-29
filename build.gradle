@@ -1,0 +1,31 @@
+buildscript {
+    org.apache.ivy.util.url.CredentialsStore.INSTANCE.addCredentials("Sonatype Nexus Repository Manager", "nexus.thinkerit.be", NEXUS_USER, NEXUS_PASS)
+    repositories {
+        mavenRepo urls:'http://nexus.thinkerit.be/content/groups/public'
+    }
+    dependencies {
+        classpath "be.thinkerit.gradle:ubuntu-packager-plugin:0.1"
+    }
+}
+
+apply plugin:'ubuntu'
+
+version = '0.1'
+
+ubuntu {
+    archive = new File("helloworld.tar.gz").toURI()
+    releaseNotes = "Example for the ubuntu packager plugin"
+    author = 'thinkerIT'
+    email = 'info@thinkerit.be'
+    homepage = 'http://www.thinkerit.be'
+    depends {
+        // uncomment to add dependencies to be installed
+        // on 'mysql'
+        // on 'jetty'
+    }
+    dirs {
+        // you can add as many dir statements as you need
+        dir '/usr/share/helloworld/bin'
+    }
+
+}
