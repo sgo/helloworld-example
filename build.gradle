@@ -15,12 +15,11 @@
  */
 
 buildscript {
-    // As there is no release available on a public repository yet you will have to use your own.
     repositories {
-        mavenRepo urls:'http://your_repo/path'
+	mavenCentral()
     }
     dependencies {
-        classpath "be.thinkerit.gradle:ubuntu-packager-plugin:0.1"
+        classpath "be.thinkerit.gradle:ubuntu-packager-plugin:0.3"
     }
 }
 
